@@ -1,0 +1,28 @@
+---
+import HomeIcon from "./icons/GoHome.astro";
+import LogoutIcon from "./icons/goLogout.astro";
+const { title = "" } = Astro.props;
+---
+
+<div>
+    <div class="fixed flex gap-3 left-0 bottom-0 z-50 m-2 h-10 w-full my-5">
+        <div class="h-14 w-14">
+            <a href="/"> <HomeIcon /></a>
+        </div>
+        <div class="h-14 w-14">
+            <a href="/logout">
+                <LogoutIcon />
+            </a>
+        </div>
+    </div>
+    <div
+        class="border-primary border-l-[5px] pl-5 border-blue-600 flex items-center justify-start h-14"
+    >
+        <h1 class="text-dark mb-2 text-3xl font-semibold text-slate-800">
+            {title}
+        </h1>
+    </div>
+    <div>
+        <slot />
+    </div>
+</div>

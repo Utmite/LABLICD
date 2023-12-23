@@ -1,0 +1,1237 @@
+---
+import BasicLayout from "../../layouts/default.astro";
+import ArticleTitle from "../../components/ArticleTitle.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import SubMenu from "../../components/SubMenu.astro";
+
+import { checkAuth } from "../../util/util.ts";
+const token = Astro.cookies.get("token");
+if (!(await checkAuth(Astro.url.origin, token?.value))) {
+    return Astro.redirect("/login");
+}
+---
+
+<BasicLayout>
+    <section class="py-5">
+        <header class="py-10">
+            <ArticleTitle title="Taller de Matematicas para Estadistica">
+                <p class="pt-4">
+                    Las soluciones provienen de estudiantes que han obtenido un
+                    puntaje superior al 80% del total al finalizar el curso.
+                    Esto se atribuye al hecho de que el profesor nunca puso a
+                    disposición las soluciones.
+                </p>
+            </ArticleTitle>
+        </header>
+        <div>
+            <SubMenu title="Talleres 2023">
+                <SubMenu title="Taller 1">
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "http://localhost:7474/public/MAT0007/T2023_1/T1MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T1MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T1WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T1WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 2">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T2LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T2LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T2MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T2MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T2WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T2WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 3">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T3LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T3LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T3MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T3MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T3WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T3WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 4">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T4LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T4LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T4MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T4MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T4WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T4WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 5">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T5LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T5LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T5MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T5MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T5WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T5WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 6">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T6LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T6LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T6MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T6MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T6WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T6WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 7">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T7LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T7LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T7MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T7MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 8">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T8LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T8LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T8MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T8MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T8WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T8WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 9">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T9LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T9LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T9MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T9MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T9WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T9WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 10">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T10LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T10LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T10MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T10MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T10WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T10WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 11">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T11LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T11LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T11MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T11MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T11WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T11WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 12">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T12LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T12LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T12MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T12MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T12WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T12WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 13">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T13LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T13LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T13MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T13MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T13WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T13WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 14">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T14LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T14LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T14MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T14MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T14WB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Miercoles - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T14WC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+                <SubMenu title="Taller 15">
+                    <SubMenu
+                        title="Lunes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T15LB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Lunes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T15LC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - B"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T15MB.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                    <SubMenu
+                        title="Martes - C"
+                        items={[
+                            {
+                                name: "Enunciado",
+                                code: "/MAT0007/T2023_1/T15MC.pdf",
+                                black: true,
+                                embed: true,
+                            },
+                            {
+                                name: "Solucion",
+                            },
+                        ]}
+                    />
+                </SubMenu>
+            </SubMenu>
+        </div>
+    </section>
+</BasicLayout>

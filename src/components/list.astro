@@ -1,0 +1,180 @@
+---
+import SubMenu from "./SubMenu.astro";
+import Config from "../../astro.config.mjs";
+const baseCode = `/cursos/`;
+---
+
+<div class="flex flex-col justify-between bg-white mb-10">
+  <div class="px-4">
+    <ul class="space-y-1">
+      <li>
+        <SubMenu
+          title="Cursos de Primer Semestre"
+          items={[
+            {
+              name: "Taller de Matematicas para Estadistica",
+              code: baseCode + "MAT0007",
+            },
+            {
+              name: "Introduccion a la Programacion",
+              code: baseCode + "IIC1103",
+            },
+            {
+              name: "Introduccion al Calculo",
+              code: baseCode + "MAT1107",
+            },
+            {
+              name: "Introduccion al Algebra y Geometria",
+              code: baseCode + "MAT1207",
+            },
+          ]}
+        />
+      </li>
+      <li>
+        <SubMenu
+          title="Cursos de Segundo Semestre"
+          items={[
+            {
+              name: "Introducción a Ciencia de Datos",
+              code: "/cursos/IMT2200",
+            },
+            {
+              name: "Álgebra Lineal para Ciencia de Datos",
+              code: "/cursos/IMT2210",
+            },
+            {
+              name: "Programacion Avanzada",
+              code: baseCode + "IIC2233",
+            },
+            {
+              name: "Calculo I",
+              code: baseCode + "MAT1610",
+            },
+          ]}
+        />
+      </li>
+      <li>
+        <SubMenu
+          title="Cursos de Tercer Semestre"
+          items={[
+            {
+              name: "Matematicas Discretas",
+              code: baseCode + "IIC1253",
+            },
+            {
+              name: "Calculo para Ciencia de Datos",
+              code: baseCode + "IMT2220",
+            },
+            {
+              name: "Algebra Lineal Avanzada y Modelamiento",
+              code: baseCode + "IMT2230",
+            },
+            {
+              name: "Ciencia de Datos Responsable",
+              code: baseCode + "IMT2240",
+            },
+            {
+              name: "Etica para Ciencia de Datos y Estadistica",
+              code: baseCode + "ETI195",
+            },
+          ]}
+        />
+      </li>
+      <li>
+        <SubMenu
+          title="Cursos de Cuarto Semestre"
+          items={[
+            {
+              name: "Modelos Probabilisticos",
+              code: baseCode + "EYP1025",
+            },
+            {
+              name: "Estructuras de Datos y Algoritmos",
+              code: baseCode + "IIC2133",
+            },
+            {
+              name: "Bases de Datos	",
+              code: baseCode + "IIC2413",
+            },
+            {
+              name: "Optimizacion para Ciencia de Datos",
+              code: baseCode + "IMT2250",
+            },
+          ]}
+        />
+      </li>
+      <li>
+        <SubMenu
+          title="Cursos de Quinto Semestre"
+          items={[
+            {
+              name: "Inferencia Estadistica",
+              code: baseCode + "EYP2114",
+            },
+            {
+              name: "Inteligencia Artificial",
+              code: baseCode + "IIC2613",
+            },
+            {
+              name: "Procesamiento de Datos Masivos",
+              code: baseCode + "IIC2440",
+            },
+          ]}
+        />
+      </li>
+      <li>
+        <SubMenu
+          title="Cursos de Sexto Semestre"
+          items={[
+            {
+              name: "Procesos Estocasticos Aplicados",
+              code: baseCode + "EYP210I",
+            },
+            {
+              name: "Analisis de Regresion",
+              code: baseCode + "EYP230I",
+            },
+            {
+              name: "Visualizacion de Informacion",
+              code: baseCode + "IIC2026",
+            },
+            {
+              name: "Mineria de Datos",
+              code: baseCode + "IIC2433",
+            },
+          ]}
+        />
+      </li>
+      <li>
+        <SubMenu
+          title="Cursos de Septimo Semestre"
+          items={[
+            {
+              name: "Simulacion Estocastica",
+              code: baseCode + "EYP211I",
+            },
+            {
+              name: "Metodos Bayesianos",
+              code: baseCode + "EYP280I",
+            },
+            {
+              name: "Teoria de Aprendizaje Automatico",
+              code: baseCode + "IMT2260",
+            },
+          ]}
+        />
+      </li>
+      <li>
+        <SubMenu
+          title="Cursos de Octavo Semestre"
+          items={[
+            {
+              name: "Proyecto Final de Grado",
+              code: baseCode + "IMT2270",
+            },
+          ]}
+        />
+      </li>
+    </ul>
+  </div>
+</div>

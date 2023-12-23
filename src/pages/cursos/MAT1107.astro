@@ -1,0 +1,36 @@
+---
+import BasicLayout from "../../layouts/default.astro";
+import ArticleTitle from "../../components/ArticleTitle.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+
+import { checkAuth } from "../../util/util.ts";
+const token = Astro.cookies.get("token");
+if (!(await checkAuth(Astro.url.origin, token?.value))) {
+    return Astro.redirect("/login");
+}
+---
+
+<BasicLayout>
+    <header class="py-10">
+        <ArticleTitle title="Introduccion al Calculo" />
+    </header>
+    <section class="px-5">
+        <div>
+            <SectionTitle title="Apuntes" />
+        </div>
+        <ul class="sp space-y-2">
+            <li class="flex items-center">
+                <span
+                    class="flex-shrink-0 h-3 w-3 bg-green-600 rounded-full mx-2"
+                ></span>
+                <a
+                    class="px-2 font-medium underline-offset-2 underline"
+                    target="_blank"
+                    href="/MAT1107/apuntes/A1.pdf"
+                >
+                    Resumen de todas la clases
+                </a>
+            </li>
+        </ul>
+    </section>
+</BasicLayout>

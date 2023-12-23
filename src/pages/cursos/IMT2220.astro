@@ -1,0 +1,49 @@
+---
+import BasicLayout from "../../layouts/default.astro";
+import ArticleTitle from "../../components/ArticleTitle.astro";
+import SubMenu from "../../components/SubMenu.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+
+import { checkAuth } from "../../util/util.ts";
+const token = Astro.cookies.get("token");
+if (!(await checkAuth(Astro.url.origin, token?.value))) {
+    return Astro.redirect("/login");
+}
+---
+
+<BasicLayout>
+    <header class="py-10">
+        <ArticleTitle title="Calculo para Ciencia de Datos" />
+    </header>
+    <section class="px-5">
+        <header class="py-4">
+            <SectionTitle title="Interrogaciones" />
+        </header>
+        <ul class="space-y-1">
+            <li>
+                <SubMenu title="Interrogaciones">
+                    <SubMenu
+                        title="2023-2"
+                        items={[
+                            {
+                                name: "I1",
+                                code: "/IMT2220/2023_1/I1.pdf",
+                                black: true,
+                            },
+                            {
+                                name: "I2",
+                                code: "/IMT2220/2023_1/I2.pdf",
+                                black: true,
+                            },
+                            {
+                                name: "E1",
+                                code: "/IMT2220/2023_1/E1.pdf",
+                                black: true,
+                            },
+                        ]}
+                    />
+                </SubMenu>
+            </li>
+        </ul>
+    </section>
+</BasicLayout>

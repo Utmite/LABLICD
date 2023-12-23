@@ -1,0 +1,23 @@
+---
+import BasicLayout from "../layouts/default.astro";
+import ArticleTitle from "../components/ArticleTitle.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import LoginPage from "../components/LoginPage.svelte";
+
+import { checkAuth } from "../util/util.ts";
+const token = Astro.cookies.get("token");
+if (await checkAuth(Astro.url.origin, token?.value)) {
+    return Astro.redirect("/");
+}
+---
+
+<BasicLayout>
+    <section class="flex justify-center items-center py-5">
+        <div class="max-w-md w-full bg-white rounded p-6 space-y-4">
+            <div class="mb-4">
+                <ArticleTitle title="Lab-LICD Auth" />
+            </div>
+            <LoginPage client:visible />
+        </div>
+    </section>
+</BasicLayout>

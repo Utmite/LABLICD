@@ -1,0 +1,19 @@
+---
+import BasicLayout from "../../layouts/default.astro";
+import ArticleTitle from "../../components/ArticleTitle.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+
+import { checkAuth } from "../../util/util.ts";
+const token = Astro.cookies.get("token");
+if (!(await checkAuth(Astro.url.origin, token?.value))) {
+    return Astro.redirect("/login");
+}
+---
+
+<BasicLayout>
+    <section class="py-5">
+        <header class="py-10">
+            <ArticleTitle title="Modelos Probabilisticos" />
+        </header>
+    </section>
+</BasicLayout>
