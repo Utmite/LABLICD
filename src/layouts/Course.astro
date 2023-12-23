@@ -1,0 +1,48 @@
+---
+import ArticleTitle from "../components/ArticleTitle.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import TableData from "../components/TableData.astro";
+import SubMenu from "../components/SubMenu.astro";
+import InfoList from "../components/InfoList.astro";
+const { title = "", subtitle = "", sections = [] } = Astro.props.content;
+---
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{title}</title>
+    </head>
+    <body class="px-5 py-10">
+        <header>
+            <ArticleTitle title={title} />
+            <p class="py-3">{subtitle}</p>
+        </header>
+        {
+            sections.map((section: any) => (
+                <section class="pl-5 pt-5">
+                    <header>
+                        <SectionTitle title={section.title} />
+                        <p class="py-3">{section.subtitle}</p>
+                    </header>
+                    <div>
+                        {section.layout == "table" && (
+                            <TableData
+                                head={section.data.head}
+                                body={section.data.body}
+                            />
+                        )}
+                        {section.layout == "menu" &&
+                            section.data.map((i: any) => (
+                                <SubMenu title={i.title} data={i.data} />
+                            ))}
+                        {section.layout == "list" && (
+                            <InfoList data={section.data} />
+                        )}
+                    </div>
+                </section>
+            ))
+        }
+    </body>
+</html>

@@ -1,0 +1,51 @@
+---
+import { isValidURL } from "../util/util.ts";
+import FileIcon from "./icons/FileIcon.astro";
+interface Item {
+    title: string;
+    text: string;
+    link?: string;
+}
+
+interface Props {
+    data: Item[];
+}
+
+const { data } = Astro.props;
+---
+
+<ul class="flex gap-5">
+    {
+        data.map((item) => (
+            <li class="max-w-md bg-gray-50 hover:bg-gray-100 rounded-xl shadow overflow-hidden md:max-w-2xl">
+                <div class="p-4">
+                    <div>
+                        <div class="flex items-center gap-3">
+                            <div class="h-10 w-10">
+                                <FileIcon />
+                            </div>
+                            <div class="uppercase tracking-wide text-sm text-slate-600 font-semibold">
+                                {item.title}
+                            </div>
+                        </div>
+                        <div>
+                            {isValidURL(item.link) ? (
+                                <a
+                                    href={item.link}
+                                    class="block rounded-lg pl-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-200 hover:text-gray-700"
+                                    target="_blank"
+                                >
+                                    {item.link}
+                                </a>
+                            ) : (
+                                <span class="block rounded-lg pl-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                    {item.text}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </li>
+        ))
+    }
+</ul>
