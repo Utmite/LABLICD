@@ -2,6 +2,8 @@ FROM node:lts AS runtime
 WORKDIR /app
 COPY ./ /app/
 
+ENV PUBLIC_FILES = http://files
+
 RUN npm run build
 
 ENV HOST=0.0.0.0
