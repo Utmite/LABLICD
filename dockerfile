@@ -1,6 +1,6 @@
 FROM node:lts AS runtime
 WORKDIR /app
-COPY ./dist /app/dist/
+COPY ./ /app/
 
 ENV PUBLIC_FILES = http://files
 
