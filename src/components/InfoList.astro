@@ -35,7 +35,7 @@ const { data } = Astro.props;
                                     class="block rounded-lg pl-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-200 hover:text-gray-700"
                                     target="_blank"
                                 >
-                                    {item.link}
+                                    {item.text ? item.text : item.link}
                                 </a>
                             ) : (
                                 <span class="block rounded-lg pl-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
