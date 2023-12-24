@@ -30,15 +30,18 @@ const { data } = Astro.props;
                         </div>
                         <div>
                             {isValidURL(item.link) ? (
+                                <span class="block rounded-lg pl-4 py-2 text-sm font-medium text-gray-500  hover:text-gray-700">
+                                    {item.text}
+                                </span>
                                 <a
                                     href={item.link}
                                     class="block rounded-lg pl-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-200 hover:text-gray-700"
                                     target="_blank"
                                 >
-                                    {item.text ? item.text : item.link}
+                                    {item.link}
                                 </a>
                             ) : (
-                                <span class="block rounded-lg pl-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                <span class="block rounded-lg pl-4 py-2 text-sm font-medium text-gray-500 ">
                                     {item.text}
                                 </span>
                             )}
