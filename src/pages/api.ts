@@ -68,6 +68,8 @@ const verifyToken = (token: string) => {
 
 const EMAIL2VERIFYCODE = new Map();
 
+
+// send verify code to email
 export const PATCH: APIRoute = async ({ request }) => {
     const data = await request.json()
     const { error, value } = usuarioRegisterSchema.validate(data);
@@ -105,7 +107,7 @@ export const PATCH: APIRoute = async ({ request }) => {
     }
     );
 }
-
+// Generate token
 export const PUT: APIRoute = async ({ request, cookies }) => {
     const data = await request.json()
     const { error, value } = usuarioVerifycodeSchema.validate(data);
@@ -167,7 +169,7 @@ export const PUT: APIRoute = async ({ request, cookies }) => {
     }
     );
 }
-
+// verify token
 export const POST: APIRoute = async ({ request }) => {
     const data = await request.json()
     const { error, value } = usuarioVerifyTokenSchema.validate(data);
@@ -210,19 +212,8 @@ export const POST: APIRoute = async ({ request }) => {
     );
 };
 
-export const GET: APIRoute = async () => {
-    return new Response(
-        JSON.stringify({
-            message: "Ok"
-        }), {
-        status: 200,
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
-    );
-}
 
+// Logout
 export const DELETE: APIRoute = async ({ cookies }) => {
     if (cookies.has("token")) {
         cookies.delete("token");
