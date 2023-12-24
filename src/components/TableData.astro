@@ -1,4 +1,9 @@
 ---
+interface Props {
+    head: Array<string>;
+    body: Array<Array<string>>;
+}
+
 const { head, body } = Astro.props;
 
 function validURL(str: string) {
