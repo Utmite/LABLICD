@@ -1,0 +1,24 @@
+services:
+  caddy:
+    image: caddy
+    networks:
+      - caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+  astro:
+    restart: always
+    image: utmite/lablicd:0.0.4v
+    networks:
+      - caddy
+  pdf:
+    restart: always
+    image: utmite/labpublic:0.0.2v
+    networks:
+      - caddy
+networks:
+  caddy:
+    driver: bridge
