@@ -21,7 +21,7 @@ const { title = "", subtitle = "", sections = [] } = Astro.props.content;
     <body class="px-5 py-10">
         <header>
             <ArticleTitle title={title} />
-            <p class="py-3">{subtitle}</p>
+            <p class="py-3 text-left pl-5">{subtitle}</p>
         </header>
         {
             sections.map((section: any) => (

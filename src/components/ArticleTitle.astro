@@ -1,6 +1,7 @@
 ---
 import HomeIcon from "./icons/GoHome.astro";
-import LogoutIcon from "./icons/goLogout.astro";
+import LogoutSvelte from "./Logout.svelte";
+
 const { title = "" } = Astro.props;
 ---
 
@@ -9,10 +10,8 @@ const { title = "" } = Astro.props;
         <div class="h-14 w-14 z-50">
             <a href="/"> <HomeIcon /></a>
         </div>
-        <div class="h-14 w-14 z-50">
-            <a href="/logout">
-                <LogoutIcon />
-            </a>
+        <div class="z-50">
+            <LogoutSvelte client:visible />
         </div>
     </div>
     <div

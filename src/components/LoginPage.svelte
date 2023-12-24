@@ -44,7 +44,7 @@
         if (!response.ok) return;
 
         setTimeout(() => {
-            window.location.pathname = "/";
+            window.location.reload();
         }, 750);
     };
 </script>

@@ -1,6 +1,6 @@
 const base = "http://localhost:4321"
 
-export const checkAuth = async (url: string, token: string | undefined) => {
+export const checkAuth = async (url: string | null, token: string | undefined) => {
 
     if (!token) return false
 

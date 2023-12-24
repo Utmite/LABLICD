@@ -168,7 +168,7 @@ export const PUT: APIRoute = async ({ request, cookies }) => {
     );
 }
 
-export const POST: APIRoute = async ({ request, redirect }) => {
+export const POST: APIRoute = async ({ request }) => {
     const data = await request.json()
     const { error, value } = usuarioVerifyTokenSchema.validate(data);
 
@@ -211,6 +211,22 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 };
 
 export const GET: APIRoute = async () => {
+    return new Response(
+        JSON.stringify({
+            message: "Ok"
+        }), {
+        status: 200,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    );
+}
+
+export const DELETE: APIRoute = async ({ cookies }) => {
+    if (cookies.has("token")) {
+        cookies.delete("token");
+    }
     return new Response(
         JSON.stringify({
             message: "Ok"
