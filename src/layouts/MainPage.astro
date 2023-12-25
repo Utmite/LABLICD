@@ -21,7 +21,7 @@ const { title = "", subtitle = "", sections = [] } = Astro.props.content;
         <ViewTransitions />
     </head>
     <body class="px-5 py-10">
-        <header transition:name="menu">
+        <header>
             <ArticleTitle title={title} />
             <p class="py-3 text-left pl-5">{subtitle}</p>
         </header>
@@ -33,20 +33,10 @@ const { title = "", subtitle = "", sections = [] } = Astro.props.content;
                             <SectionTitle title={section.title} />
                             <p class="py-3">{section.subtitle}</p>
                         </header>
-                        <div>
-                            {section.layout == "table" && (
-                                <TableData
-                                    head={section.data.head}
-                                    body={section.data.body}
-                                />
-                            )}
-                            {section.layout == "menu" &&
-                                section.data.map((i: any) => (
-                                    <SubMenu title={i.title} data={i.data} />
-                                ))}
-                            {section.layout == "list" && (
-                                <InfoList data={section.data} />
-                            )}
+                        <div transition:name="menu">
+                            {section.data.map((i: any) => (
+                                <SubMenu title={i.title} data={i.data} />
+                            ))}
                         </div>
                     </section>
                 ))
