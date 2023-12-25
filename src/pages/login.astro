@@ -1,14 +1,15 @@
 ---
 import BasicLayout from "../layouts/Default.astro";
 import ArticleTitle from "../components/ArticleTitle.astro";
-import SectionTitle from "../components/SectionTitle.astro";
 import LoginPage from "../components/LoginPage.svelte";
+import { ViewTransitions, slide } from "astro:transitions";
 ---
 
 <BasicLayout>
     <section class="flex justify-center items-center py-5">
+        <ViewTransitions />
         <div class="max-w-md w-full bg-white rounded p-6 space-y-4">
-            <div class="mb-4">
+            <div class="mb-4" transition:animate={slide({ duration: 475 })}>
                 <ArticleTitle title="Lab-LICD Auth" />
             </div>
             <LoginPage client:visible />

@@ -4,7 +4,8 @@ import SectionTitle from "../components/SectionTitle.astro";
 import TableData from "../components/TableData.astro";
 import SubMenu from "../components/SubMenu.astro";
 import InfoList from "../components/InfoList.astro";
-import { ViewTransitions } from "astro:transitions";
+import FixedButtons from "../components/FooterButtons.astro";
+import { ViewTransitions, slide } from "astro:transitions";
 const { title = "", subtitle = "", sections = [] } = Astro.props.content;
 ---
 
@@ -21,8 +22,10 @@ const { title = "", subtitle = "", sections = [] } = Astro.props.content;
         <ViewTransitions />
     </head>
     <body class="px-5 py-10">
-        <header transition:name="menu">
-            <ArticleTitle title={title} />
+        <header>
+            <div transition:animate={slide({ duration: 475 })}>
+                <ArticleTitle title={title} />
+            </div>
             <p class="py-3 text-left pl-5">{subtitle}</p>
         </header>
         <main>
@@ -61,6 +64,7 @@ const { title = "", subtitle = "", sections = [] } = Astro.props.content;
                     target="_blank">https://github.com/Utmite/LABLICD</a
                 >
             </div>
+            <FixedButtons />
         </footer>
     </body>
 </html>
