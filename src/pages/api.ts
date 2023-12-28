@@ -125,7 +125,7 @@ export const PUT: APIRoute = async ({ request, cookies }) => {
 
     if (!EMAIL2VERIFYCODE.has(value.email)) return new Response(
         JSON.stringify({
-            message: "Su correo no tiene ningun codigo de verificacion"
+            message: "Su correo electrónico no cuenta con ningún código de verificación."
         }), {
         status: 404,
         headers: {
@@ -137,7 +137,7 @@ export const PUT: APIRoute = async ({ request, cookies }) => {
 
     if (value.verifycode !== (+EMAIL2VERIFYCODE.get(value.email)[0])) return new Response(
         JSON.stringify({
-            message: "El codigo no coincide"
+            message: "El código no coincide."
         }), {
         status: 401,
         headers: {
@@ -156,6 +156,8 @@ export const PUT: APIRoute = async ({ request, cookies }) => {
     cookies.set("token", token, {
         expires: fechaActual
     })
+
+    console.log(`${new Date()} | ${value.email} has logged in`);
 
     return new Response(
         JSON.stringify({
