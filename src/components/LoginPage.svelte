@@ -20,12 +20,16 @@
         });
         code = response.status;
         const data = await response.json();
-        if (response.status !== 200) {
-            if (response.status !== 400) return;
+
+        if (response.ok) return;
+
+        if (response.status === 400) {
             message =
                 "La dirección de correo electrónico no pertenece al dominio 'uc.cl'.";
             return;
         }
+
+        message = data.message;
     };
     const realogin = async () => {
         const response = await fetch("/api", {

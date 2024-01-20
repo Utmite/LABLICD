@@ -34,8 +34,6 @@ sections:
               link: "/cursos/3/IMT2220"
             - title: "Álgebra Lineal Avanzada y Modelamiento"
               link: "/cursos/3/IMT2230"
-            - title: "Ciencia de Datos Responsable"
-              link: "/cursos/3/IMT2240"
             - title: "Ética para Ciencia de Datos y Estadística"
               link: "/cursos/3/ETI195"
         - title: "Cuarto Semestre"

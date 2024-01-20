@@ -29,7 +29,7 @@ const generateVerifyCode = () => {
     return codigo.toString();
 }
 
-const sendEmail = (email: string, codigo: string) => {
+const sendEmail = async (email: string, codigo: string) => {
 
     const mailOptions = {
         from: import.meta.env.EMAIL,
@@ -37,12 +37,9 @@ const sendEmail = (email: string, codigo: string) => {
         subject: 'Código de verificación',
         text: `Su código de verificación de 5 números es: ${codigo}`,
     };
+    await transporter.sendMail(mailOptions)
 
-    transporter.sendMail(mailOptions, (error: any, info: any) => {
-        if (error) {
-            console.log('Error al enviar el correo:', error);
-        }
-    });
+
 }
 
 const createToken = (email: string) => {
@@ -87,7 +84,20 @@ export const PATCH: APIRoute = async ({ request }) => {
 
     const codigo = generateVerifyCode();
 
-    sendEmail(value.email, codigo);
+    try {
+        await sendEmail(value.email, codigo);
+    } catch {
+        return new Response(
+            JSON.stringify({
+                message: "Lamentamos informarte que hubo un problema al intentar enviar tu correo desde nuestra aplicación web. Estamos trabajando para solucionarlo lo más rápido posible. Por favor, inténtalo nuevamente más tarde."
+            }), {
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        );
+    }
 
     EMAIL2VERIFYCODE.set(value.email, [codigo, value]);
 
@@ -151,7 +161,7 @@ export const PUT: APIRoute = async ({ request, cookies }) => {
 
 
     let fechaActual = new Date();
-    fechaActual.setDate(fechaActual.getDate() + 1);
+    fechaActual.setDate(fechaActual.getDate() + 365);
 
     cookies.set("token", token, {
         expires: fechaActual
