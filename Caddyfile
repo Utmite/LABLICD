@@ -1,11 +1,5 @@
 lablicd.sytes.net {
 
-   handle /pdf/* {
-        reverse_proxy pdf:7474 {
-           header_up X-Forwarded-For {remote_host}
-        }
-   }
-
    handle /* {
         reverse_proxy astro:4321 {
            header_up X-Forwarded-For {remote_host}

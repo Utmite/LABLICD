@@ -117,6 +117,7 @@ export const PATCH: APIRoute = async ({ request }) => {
     }
     );
 }
+
 // Generate token
 export const PUT: APIRoute = async ({ request, cookies }) => {
     const data = await request.json()
@@ -181,6 +182,7 @@ export const PUT: APIRoute = async ({ request, cookies }) => {
     }
     );
 }
+
 // verify token
 export const POST: APIRoute = async ({ request }) => {
     const data = await request.json()
@@ -223,7 +225,6 @@ export const POST: APIRoute = async ({ request }) => {
     }
     );
 };
-
 
 // Logout
 export const DELETE: APIRoute = async ({ cookies }) => {

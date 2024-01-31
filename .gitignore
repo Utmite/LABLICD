@@ -5,6 +5,7 @@ dist/
 .lablicd/
 # dependencies
 node_modules/
+py_modules/
 
 # logs
 npm-debug.log*
