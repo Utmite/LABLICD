@@ -16,11 +16,11 @@ import binascii
 load_dotenv()
 
 client = MongoClient(
-    f"mongodb://{os.getenv('MONGO_USER')}:{os.getenv('MONGO_PASS')}@iloveuwu.ddns.net"
+    f"mongodb://{os.getenv('MONGO_USER')}:{os.getenv('MONGO_PASS')}@{os.getenv('MONGO_HOST')}"
 )
 lablicd_db = client[os.getenv("MONGO_DB_NAME")]
 fs = gridfs.GridFS(lablicd_db)
-pdf_collection = lablicd_db["pdfs_2"]
+pdf_collection = lablicd_db["pdfs"]
 pdf_collection.create_index("hash", unique=True)
 pdf_collection.create_index("patente", unique=True)
 
@@ -85,6 +85,7 @@ async def server(websocket: WebSocketServerProtocol, path):
         try:
             data = await websocket.recv()
         except websockets.exceptions.ConnectionClosedOK:
+            await websocket.close()
             continue
         form_data: dict = json.loads(data)
         action = form_data.get("action", 0)
@@ -104,22 +105,31 @@ async def server(websocket: WebSocketServerProtocol, path):
 
             pdf_model = PDFSchema(**pdf_model)
             archivo = fs.get(ObjectId(pdf_model.archivo_id))
+            num_chunk = 0
 
-            binario = archivo.read()
+            with archivo as file:
+                while True:
+                    chunk = file.read(5 * 1024 * 1024)
+                    if not chunk:
+                        break
+                    num_chunk = num_chunk + 1
+                    base64_string = base64.b64encode(chunk).decode("utf-8")
+                    await websocket.send(
+                        json.dumps(
+                            {
+                                "message": "ok",
+                                "code": 200,
+                                "data": base64_string,
+                                "num_chunk": num_chunk,
+                            }
+                        )
+                    )
 
-            base64_string = base64.b64encode(binario).decode("utf-8")
+            await websocket.close()
 
-            await websocket.send(
-                json.dumps(
-                    {
-                        "message": "ok",
-                        "code": 200,
-                        "data": base64_string,
-                    }
-                )
-            )
-
-        elif action == Actions.POST.value:
+        elif (
+            action == Actions.POST.value and os.getenv("CAN_UPLOAD", "FALSE") == "TRUE"
+        ):
             archivo = form_data.get("data", None)
 
             if not archivo:

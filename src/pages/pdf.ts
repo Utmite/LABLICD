@@ -48,8 +48,6 @@ const conectarWS = async (): Promise<WebSocket> => {
         ws.addEventListener("error", (e) => {
             reject(e)
         })
-
-
     })
 }
 
@@ -98,39 +96,16 @@ export const POST: APIRoute = async ({ request }) => {
 }
 
 export const GET: APIRoute = async ({ url }) => {
+    try {
+        let ws = await conectarWS()
 
+        const connectionPromise = new Promise<Response>((resolve, reject) => {
 
-    const ws = await conectarWS()
-    const connectionPromise = new Promise<Response>((resolve, reject) => {
-
-        const timeoutId = setTimeout(() => {
-            clearTimeout(timeoutId)
-            resolve(new Response(
-                JSON.stringify({
-                    message: "Timeout"
-                }), {
-                status: 404,
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-            )
-            );
-        }, 25000);
-
-        ws.send(JSON.stringify({
-            patente: url.searchParams.get("p"),
-            action: Actions.GET
-        }))
-
-        ws.addEventListener("message", (e) => {
-            clearTimeout(timeoutId);
-            const msg = JSON.parse(e.data as string);
-
-            if (!msg?.data) {
+            const timeoutId = setTimeout(() => {
+                clearTimeout(timeoutId)
                 resolve(new Response(
                     JSON.stringify({
-                        message: "Not found"
+                        message: "Timeout"
                     }), {
                     status: 404,
                     headers: {
@@ -139,38 +114,86 @@ export const GET: APIRoute = async ({ url }) => {
                 }
                 )
                 );
-                return
-            }
+            }, 25000);
 
-            const buffer = Buffer.from(msg.data, 'base64');
+            ws.send(JSON.stringify({
+                patente: url.searchParams.get("p"),
+                action: Actions.GET
+            }))
+            let chunks: string[] = []
+            ws.addEventListener("message", (e) => {
+                clearTimeout(timeoutId);
+                const msg = JSON.parse(e.data as string);
 
-            resolve(
-                new Response(buffer, {
-                    status: 200,
-                    headers: {
-                        'Content-Type': 'application/pdf',
-                        'Content-Disposition': 'inline; filename=archivo.pdf'
-                    },
-                })
-            )
-        });
-
-        ws.addEventListener("error", (error) => {
-            clearTimeout(timeoutId)
-            resolve(new Response(
-                JSON.stringify({
-                    message: error
-                }), {
-                status: 404,
-                headers: {
-                    'Content-Type': 'application/json'
+                if (!msg?.data) {
+                    resolve(new Response(
+                        JSON.stringify({
+                            message: "Not found"
+                        }), {
+                        status: 404,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }
+                    )
+                    );
+                    return
                 }
-            }
-            )
-            );
-        });
-    })
-        .finally(() => ws.close())
 
-    return (await connectionPromise)
+                chunks.splice(msg?.num_chunk, 0, msg?.data);
+
+
+            });
+            ws.addEventListener("close", () => {
+
+                const bufferArray = chunks.map(base64String => Buffer.from(base64String, 'base64'));
+                const buffer = Buffer.concat(bufferArray);
+
+                resolve(
+                    new Response(buffer, {
+                        status: 200,
+                        headers: {
+                            'Content-Type': 'application/pdf',
+                            'Content-Disposition': 'inline; filename=archivo.pdf'
+                        },
+                    })
+                )
+            })
+            ws.addEventListener("error", (error) => {
+                clearTimeout(timeoutId)
+                resolve(new Response(
+                    JSON.stringify({
+                        message: error.message
+                    }), {
+                    status: 404,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                )
+                );
+            });
+        }).finally(() => {
+            if (ws.readyState !== ws.CLOSED && ws.readyState !== ws.CLOSING) {
+                ws.close()
+            }
+        })
+
+        return (await connectionPromise)
+    } catch (error) {
+        return new Response(
+            JSON.stringify({
+                //@ts-ignore
+                message: error?.message
+            }), {
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        )
+
+    }
+
+
 }

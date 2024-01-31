@@ -8,11 +8,13 @@ import { ViewTransitions, slide } from "astro:transitions";
 <BasicLayout>
     <section class="flex justify-center items-center py-5">
         <ViewTransitions />
-        <div class="w-full bg-white rounded p-6 space-y-4">
+        <div class="max-w-md bg-white rounded p-6 space-y-4">
             <div class="mb-4" transition:animate={slide({ duration: 475 })}>
-                <ArticleTitle title="Lab-LICD Auth" />
+                <ArticleTitle title="Lab-LICD Upload" />
             </div>
-            <UploadForm client:visible />
+            <div>
+                <UploadForm client:visible />
+            </div>
         </div>
     </section>
 </BasicLayout>

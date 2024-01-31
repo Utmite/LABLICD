@@ -25,9 +25,5 @@ export const checkAuth = async (url: string | null, token: string | undefined) =
 export function isValidURL(str: string | undefined) {
     if (!str) return false
 
-    var pattern = new RegExp(
-        "\/(?:[^\/]+\/)"
-
-    ); // fragment locator
-    return !!pattern.test(str);
+    return true
 }

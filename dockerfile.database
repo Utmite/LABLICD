@@ -1,0 +1,6 @@
+FROM node:lts AS runtime
+WORKDIR /app
+COPY ./ /app/
+
+EXPOSE 2233
+CMD node ./database/main.py
