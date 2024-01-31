@@ -116,7 +116,7 @@ export const GET: APIRoute = async ({ url }) => {
             }
             )
             );
-        }, 5000);
+        }, 25000);
 
         ws.send(JSON.stringify({
             patente: url.searchParams.get("p"),
@@ -142,9 +142,7 @@ export const GET: APIRoute = async ({ url }) => {
                 return
             }
 
-
             const buffer = Buffer.from(msg.data, 'base64');
-            console.log(buffer)
 
             resolve(
                 new Response(buffer, {

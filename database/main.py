@@ -11,6 +11,7 @@ from pymongo import MongoClient, errors
 from pydantic import BaseModel, ValidationError, field_validator, Field
 from enum import Enum
 from bson import ObjectId
+import binascii
 
 load_dotenv()
 
@@ -127,7 +128,21 @@ async def server(websocket: WebSocketServerProtocol, path):
                 )
                 continue
 
-            archivo_bytes = base64.b64decode(archivo)
+            try:
+                PDFSchema(**form_data)
+            except ValidationError as error:
+                await websocket.send(
+                    json.dumps({"message": f"ERROR: {error.errors()}", "code": 400})
+                )
+                return
+            try:
+                archivo_bytes = base64.b64decode(archivo)
+            except binascii.Error as error:
+                await websocket.send(
+                    json.dumps({"message": f"ERROR: base64", "code": 400})
+                )
+                return
+
             uuid_hash = hashlib.sha256(archivo_bytes).hexdigest()
 
             archivo_id = fs.put(archivo_bytes, filename=f"{uuid_hash}.pdf")
