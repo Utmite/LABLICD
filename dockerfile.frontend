@@ -2,9 +2,11 @@ FROM node:lts AS runtime
 WORKDIR /app
 COPY ./ /app/
 
-RUN npm run build
-
+ENV WS_URI=ws://database:2233
 ENV HOST=0.0.0.0
 ENV PORT=4321
 EXPOSE 4321
+
+RUN npm run build
+
 CMD node ./dist/server/entry.mjs

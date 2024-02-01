@@ -127,9 +127,13 @@ async def server(websocket: WebSocketServerProtocol, path):
 
             await websocket.close()
 
-        elif (
-            action == Actions.POST.value and os.getenv("CAN_UPLOAD", "FALSE") == "TRUE"
-        ):
+        elif action == Actions.POST.value:
+            if os.getenv("CAN_UPLOAD", "FALSE") == "TRUE":
+                await websocket.send(
+                    json.dumps({"message": "You dont allow upload files", "code": 403})
+                )
+                continue
+
             archivo = form_data.get("data", None)
 
             if not archivo:
@@ -176,7 +180,7 @@ async def server(websocket: WebSocketServerProtocol, path):
 
 def main():
     asyncio.get_event_loop().run_until_complete(
-        websockets.serve(server, "localhost", 2233, max_size=1_000 * 1024 * 1024)
+        websockets.serve(server, "0.0.0.0", 2233, max_size=1_000 * 1024 * 1024)
     )
     asyncio.get_event_loop().run_forever()
 
