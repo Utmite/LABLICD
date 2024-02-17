@@ -1,3 +1,4 @@
+version: '3'
 services:
   caddy:
     image: caddy
@@ -11,12 +12,12 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
   astro:
     restart: always
-    image: utmite/lablicd:0.0.4v
+    image: utmite/lablicd:0.1.1v
     networks:
       - caddy
-  pdf:
+  database:
     restart: always
-    image: utmite/labpublic:0.0.2v
+    image: utmite/lablicd_db:0.0.2v
     networks:
       - caddy
 networks:

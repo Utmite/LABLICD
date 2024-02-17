@@ -1,9 +1,11 @@
 lablicd.sytes.net {
+    redir https://lablicd.utmite.dev{uri} permanent
+}
 
+lablicd.utmite.dev {
    handle /* {
         reverse_proxy astro:4321 {
            header_up X-Forwarded-For {remote_host}
         }
    }
 }
-

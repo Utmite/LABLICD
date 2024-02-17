@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/Course.astro
-title: LAB-LICD
-subtitle: LAB-LICD es una plataforma diseñada para recopilar todos los apuntes relacionados con la Licenciatura en Ingeniería en Ciencia de Datos, incluyendo interrogaciones, proyectos, tareas y cualquier material que sea valioso para los estudiantes y el proceso de aprendizaje.  La misión de esta plataforma es buscar el bienestar de la comunidad.
+title: LAB-LICD UC
+subtitle: LAB-LICD UC es una plataforma diseñada para recopilar todos los apuntes relacionados con la Licenciatura en Ingeniería en Ciencia de Datos de la pontificia universidad católica de chile como interrogaciones, proyectos, tareas y cualquier material que sea valioso para los estudiantes y el proceso de aprendizaje.
 sections: 
     - title: Ramos por semestre
       layout: menu
